@@ -5,6 +5,10 @@ projectData = {};
 const express = require('express');
 const bodyParser = require('body-parser');
 
+// Require Axios to replace fetch on openweathermap.org API call
+const axios = require('axios');
+
+
 // Start up an instance of app
 const app = express();
 /* Middleware*/
@@ -36,7 +40,7 @@ app.post('/updateprojectdata', postToServer);
 function postToServer(req, res) {
     let newEntry = req.body;
     projectData.date = newEntry.date;
-    projectData.temp = newEntry.temperature;
+    projectData.temp = newEntry.temp;
     projectData.feelings = newEntry.feelings;
     res.send(projectData);
     console.log(projectData);
